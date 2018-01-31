@@ -1,3 +1,5 @@
+http://blog.csdn.net/qq_14845119/article/details/53308996
+
 # Deep Face Recognition with Caffe Implementation
 
 This branch is developed for deep face recognition, the related paper is as follows.
