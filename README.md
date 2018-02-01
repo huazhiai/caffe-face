@@ -1,8 +1,13 @@
 MATLAB中RGB图像是存储在H*W*CH的三维矩阵中，其中H表示hight（即rows），W表示width（即cols），CH即channel。
+
 caffe使用的图像是BGR格式，且矩阵维度为W*H*CH。
+
 因此matlab读取的图像要经过以下处理再送入caffe网络。
+
     Img = permute(Img, [2,1,3]);%flip width and height 
+    
     Img = Img(:,:,[3,2,1]);%permute channels from RGB to BGR
+    
 http://blog.csdn.net/qq_14845119/article/details/53308996
 
 # Deep Face Recognition with Caffe Implementation
