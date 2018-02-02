@@ -1,3 +1,14 @@
+1、删除方法
+在caffe中，很多训练完的模型只提取特征，然后比较两个特征的相似度，而不是分类。这个情况，可以删除caffe模型中的最后一层全连接层，这样可以大大减小模型，因为全连接层的参数非常多，方法如下：
+ net = caffe.Net('XX_deploy.prototxt', 'XX.caffemodel', 'test');
+ net.save('XX_remove_the_last_fc.caffemodel');
+其实可以扩展到删除任意最后几层的参数，只需要在XX_deploy.prototxt中删除你需要删除层即可，呵呵，就这么简单。
+2、修改方法
+加载模型；net = caffe.Net('XX_deploy.prototxt', 'XX.caffemodel', 'test');
+修改：net.layers('names').params(1).set_data(w);
+           net.layers('names').params(2).set_data(b);
+保存模型net.save('XX.caffemodel');
+
 MATLAB中RGB图像是存储在H*W*CH的三维矩阵中，其中H表示hight（即rows），W表示width（即cols），CH即channel。
 
 caffe使用的图像是BGR格式，且矩阵维度为W*H*CH。
