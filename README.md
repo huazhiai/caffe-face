@@ -3,11 +3,13 @@
 -model=examples/mnist/lenet_train_test.prototxt 
 -weights=examples/mnist/lenet_iter_10000.caffemodel 
 -gpu=0 
+
 2、删除方法
 在caffe中，很多训练完的模型只提取特征，然后比较两个特征的相似度，而不是分类。这个情况，可以删除caffe模型中的最后一层全连接层，这样可以大大减小模型，因为全连接层的参数非常多，方法如下：
  net = caffe.Net('XX_deploy.prototxt', 'XX.caffemodel', 'test');
  net.save('XX_remove_the_last_fc.caffemodel');
 其实可以扩展到删除任意最后几层的参数，只需要在XX_deploy.prototxt中删除你需要删除层即可，呵呵，就这么简单。
+
 3、修改方法
 加载模型；net = caffe.Net('XX_deploy.prototxt', 'XX.caffemodel', 'test');
 修改：net.layers('names').params(1).set_data(w);
