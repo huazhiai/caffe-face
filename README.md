@@ -9,7 +9,7 @@
            net.layers('names').params(2).set_data(b);
 保存模型net.save('XX.caffemodel');
 
-MATLAB中RGB图像是存储在H*W*CH的三维矩阵中，其中H表示hight（即rows），W表示width（即cols），CH即channel。
+3、MATLAB中RGB图像是存储在H*W*CH的三维矩阵中，其中H表示hight（即rows），W表示width（即cols），CH即channel。
 
 caffe使用的图像是BGR格式，且矩阵维度为W*H*CH。
 
